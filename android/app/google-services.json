@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "847539426316",
+    "project_id": "videobia",
+    "storage_bucket": "videobia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847539426316:android:c1a18c7e3d621e75830a29",
+        "android_client_info": {
+          "package_name": "com.ahmedessam.videobia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847539426316-g7sj5ohmoujni0s6l53obro2q81nvg5p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWv84TgXFcaEvwF5TPWaTuyP-btMIg42k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847539426316-g7sj5ohmoujni0s6l53obro2q81nvg5p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
