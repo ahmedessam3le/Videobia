@@ -1,1 +1,1 @@
-class No {}
+class Ok {}
