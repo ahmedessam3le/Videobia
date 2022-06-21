@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:videobia/constants.dart';
+import 'package:videobia/controllers/upload_video_controller.dart';
 
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
@@ -21,13 +23,12 @@ class ConfirmScreen extends StatefulWidget {
 class _ConfirmScreenState extends State<ConfirmScreen> {
   late VideoPlayerController videoPlayerController;
 
-  // @override
-  // void initState() {
-  //
-  // }
-  // @override
-  // @protected
-  // @mustCallSuper
+  final UploadVideoController _uploadVideoController =
+      Get.put(UploadVideoController());
+
+  final TextEditingController songNameController = TextEditingController();
+  final TextEditingController captionController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -60,6 +61,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             ),
             SizedBox(height: 40.h),
             TextField(
+              controller: songNameController,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   CupertinoIcons.music_note,
@@ -72,6 +74,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             ),
             SizedBox(height: 20.h),
             TextField(
+              controller: captionController,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   CupertinoIcons.captions_bubble,
@@ -87,7 +90,13 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               style: ElevatedButton.styleFrom(
                 primary: buttonColor,
               ),
-              onPressed: () {},
+              onPressed: () {
+                _uploadVideoController.uploadVideo(
+                  videoPath: widget.videoPath,
+                  songName: songNameController.text,
+                  caption: captionController.text,
+                );
+              },
               child: Text('Share'),
             ),
           ],
