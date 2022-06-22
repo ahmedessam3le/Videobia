@@ -27,8 +27,11 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     super.dispose();
+    videoPlayerController.pause();
+    videoPlayerController.removeListener(() {});
+
     videoPlayerController.dispose();
   }
 
