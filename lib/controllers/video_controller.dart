@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:videobia/constants.dart';
@@ -24,5 +25,25 @@ class VideoController extends GetxController {
         },
       ),
     );
+  }
+
+  likePost(String id) async {
+    DocumentSnapshot documentSnapshot =
+        await firebaseFirestore.collection('videos').doc(id).get();
+
+    if ((documentSnapshot.data() as dynamic)['likes']
+        .contains(authController.user.uid)) {
+      firebaseFirestore.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayRemove(
+          [authController.user.uid],
+        ),
+      });
+    } else {
+      firebaseFirestore.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayUnion(
+          [authController.user.uid],
+        ),
+      });
+    }
   }
 }

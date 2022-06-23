@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:videobia/constants.dart';
 import 'package:videobia/controllers/video_controller.dart';
 import 'package:videobia/views/screens/comments_screen.dart';
 import 'package:videobia/views/widgets/circle_animation.dart';
@@ -124,9 +125,17 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
+                                      onTap: () {
+                                        _videoController
+                                            .likePost(video.videoId);
+                                      },
                                       child: Icon(
                                         Icons.favorite,
                                         size: 45.r,
+                                        color: video.likes.contains(
+                                                authController.user.uid)
+                                            ? Colors.red
+                                            : Colors.white,
                                       ),
                                     ),
                                     Text(
